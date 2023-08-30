@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/instructions1Fragment">
+
+    <fragment
+        android:id="@+id/instructions1Fragment"
+        android:name="com.af.shoeapp.Instructions1Fragment"
+        android:label="fragment_instructions1"
+        tools:layout="@layout/fragment_instructions1" >
+        <action
+            android:id="@+id/action_instructions1Fragment_to_instructions2Fragment"
+            app:destination="@id/instructions2Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/instructions2Fragment"
+        android:name="com.af.shoeapp.Instructions2Fragment"
+        android:label="fragment_instructions2"
+        tools:layout="@layout/fragment_instructions2" >
+        <action
+            android:id="@+id/action_instructions2Fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.af.shoeapp.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.af.shoeapp.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
+</navigation>
