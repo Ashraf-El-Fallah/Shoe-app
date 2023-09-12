@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 class WelcomeFragment : Fragment() {
 
@@ -13,7 +16,15 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+        val view = inflater.inflate(R.layout.fragment_welcome, container, false)
+        val nextButton= view.findViewById< Button>(R.id.btnNext3)
+
+        nextButton.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_welcomeFragment_to_shoeListFragment)
+        }
+
+        return view
     }
 
 }
