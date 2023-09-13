@@ -22,20 +22,6 @@ class ShoeListFragment : Fragment() {
 
     lateinit var shoeAdapter:ShoeAdapter
 
-//    private val navArgs by navArgs<ShoeListFragmentArgs>()
-
-//    private var companyName: String? = null
-//    private var shoeName: String? = null
-//
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        arguments?.let {
-//            companyName = it.getString("companyName")
-//            shoeName=it.getString("shoeName")
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +51,7 @@ class ShoeListFragment : Fragment() {
 
 
         //receive arguments
-
+        
         val args=this.arguments
         val companyName=args?.get("companyName")
         val shoeName=args?.get("shoeName")
@@ -79,6 +65,8 @@ class ShoeListFragment : Fragment() {
         //navigate to the next fragment
 
         val addButton=view.findViewById<FloatingActionButton>(R.id.fabAdd)
+
+
         addButton.setOnClickListener {
             view.findNavController()
                 .navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
@@ -88,18 +76,6 @@ class ShoeListFragment : Fragment() {
         return view
     }
 
-//    private fun setOnClicks()
-//    {
-//
-//
-//    }
-
-
-//    private fun toolBarConfiguration()
-//    {
-//
-//
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_toolbar , menu)

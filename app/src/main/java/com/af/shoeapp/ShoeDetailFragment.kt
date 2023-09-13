@@ -33,7 +33,7 @@ class ShoeDetailFragment :Fragment()
         activity.setSupportActionBar(toolBar)
 
         //recycler view
-        val sizes= arrayListOf<SelectSize>(SelectSize(0))
+        val sizes= arrayListOf<SelectSize>(SelectSize(8),SelectSize(9) ,SelectSize(10),SelectSize(11),SelectSize(12))
         selectSizeAdapter=SelectSizeAdapter(sizes)
         val recyclerView:RecyclerView=view.findViewById(R.id.rvSelectSize)
         recyclerView.adapter=selectSizeAdapter

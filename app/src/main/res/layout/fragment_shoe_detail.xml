@@ -175,6 +175,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         tools:listitem="@+id/select_size"
+        tools:itemCount="5"
         />
 
     <Button
