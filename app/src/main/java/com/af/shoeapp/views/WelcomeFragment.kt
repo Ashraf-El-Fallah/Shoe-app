@@ -1,4 +1,4 @@
-package com.af.shoeapp
+package com.af.shoeapp.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,29 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
+import com.af.shoeapp.R
 
-
-class Instructions1Fragment : Fragment() {
-
+class WelcomeFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view= inflater.inflate(R.layout.fragment_instructions1, container, false)
-        val nextButton=view.findViewById<Button>(R.id.btnNext1)
+        val view = inflater.inflate(R.layout.fragment_welcome, container, false)
+        val nextButton= view.findViewById< Button>(R.id.btnNext3)
 
         nextButton.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_instructions1Fragment_to_instructions2Fragment)
+                .navigate(R.id.action_welcomeFragment_to_shoeListFragment)
         }
 
         return view
     }
-
 
 }
