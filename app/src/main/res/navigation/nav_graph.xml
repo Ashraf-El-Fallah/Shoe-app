@@ -54,23 +54,24 @@
         <argument
             android:name="companyName"
             app:argType="string"
+            app:nullable="true"
             />
 
         <argument
             android:name="shoeName"
             app:argType="string"
+            app:nullable="true"
             />
 
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/shoeDetailFragment"
         android:name="ShoeDetailFragment"
         android:label="ShoeDetailFragment" >
-
-
 
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.af.shoeapp.R
 import com.af.shoeapp.SelectSize
 import com.af.shoeapp.SelectSizeAdapter
+import com.af.shoeapp.ShoeListFragment
 import com.google.android.material.appbar.MaterialToolbar
 
 class ShoeDetailFragment :Fragment()
@@ -37,20 +38,28 @@ class ShoeDetailFragment :Fragment()
         val recyclerView:RecyclerView=view.findViewById(R.id.rvSelectSize)
         recyclerView.adapter=selectSizeAdapter
 
-        val companyNameView=view.findViewById<EditText>(R.id.etCompany)
-        val shoeNameView=view.findViewById<EditText>(R.id.etName)
-
 
         val save=view.findViewById<Button>(R.id.btnSave)
 
         save.setOnClickListener {
-            val companyName=companyNameView.text.toString()
-            val shoeName=shoeNameView.text.toString()
 
-            val action=ShoeDetailFragmentDirections
-                .actionShoeDetailFragmentToShoeListFragment(companyName,shoeName)
+            val companyNameView=view.findViewById<EditText>(R.id.etCompany)
+            val shoeNameView=view.findViewById<EditText>(R.id.etName)
 
-            view.findNavController().navigate(action)
+            var companyName=companyNameView.text.toString()
+            var shoeName=shoeNameView.text.toString()
+
+            val bundle=Bundle()
+            bundle.putString("companyName",companyName)
+            bundle.putString("shoeName",shoeName)
+
+
+            val destinationFragment=ShoeListFragment()
+            destinationFragment.arguments=bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container_view,destinationFragment)?.commit()
+
+
+
         }
 
 

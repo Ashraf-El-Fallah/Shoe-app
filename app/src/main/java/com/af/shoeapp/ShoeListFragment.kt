@@ -22,7 +22,21 @@ class ShoeListFragment : Fragment() {
 
     lateinit var shoeAdapter:ShoeAdapter
 
-    private val navArgs by navArgs<ShoeListFragmentArgs>()
+//    private val navArgs by navArgs<ShoeListFragmentArgs>()
+
+//    private var companyName: String? = null
+//    private var shoeName: String? = null
+//
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        arguments?.let {
+//            companyName = it.getString("companyName")
+//            shoeName=it.getString("shoeName")
+//        }
+//    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,14 +62,16 @@ class ShoeListFragment : Fragment() {
         val recyclerView:RecyclerView=view.findViewById(R.id.rvShoes)
         recyclerView.adapter=shoeAdapter
 
+
+
         //receive arguments
-        //val companyName=ShoeListFragmentArgs.fromBundle(requireArguments()).companyName!!
-        //val shoeName=ShoeListFragmentArgs.fromBundle(requireArguments()).shoeName!!
 
-         val companyName=navArgs.companyName
-        val shoeName=navArgs.shoeName
+        val args=this.arguments
+        val companyName=args?.get("companyName")
+        val shoeName=args?.get("shoeName")
 
-        val userShoe=Shoe(shoeName.toString(),companyName,R.drawable.shoe3,20)
+        val userShoe=Shoe(shoeName.toString(),companyName.toString(),R.drawable.shoe3,20)
+
         shoes.add(userShoe)
         shoeAdapter.notifyItemInserted(shoes.size-1)
 

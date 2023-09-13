@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -25,14 +26,16 @@ class LoginFragment : Fragment() {
         val mySharedPref=requireContext().getSharedPreferences("my_prefrences", Context.MODE_PRIVATE)
         val editor=mySharedPref.edit()
 
-        val enteredEmail=R.id.etEmail.toString()
-        val enteredPassword=R.id.etPassword.toString()
+
 
 
         val signInButton=view.findViewById<Button>(R.id.btnSignIn)
         val registerButton=view.findViewById<Button>(R.id.btnRegister)
 
         registerButton.setOnClickListener {
+
+            val enteredEmail=view.findViewById<EditText>(R.id.etEmail).text.toString()
+            val enteredPassword= view.findViewById<EditText>(R.id.etPassword).text.toString()
 
             editor.putString("email",enteredEmail)
             editor.putString("password",enteredPassword)
@@ -44,6 +47,9 @@ class LoginFragment : Fragment() {
         }
 
         signInButton.setOnClickListener {
+
+            val enteredEmail=view.findViewById<EditText>(R.id.etEmail).text.toString()
+            val enteredPassword= view.findViewById<EditText>(R.id.etPassword).text.toString()
 
             val storedEmail=mySharedPref.getString("email","")
             val storedPassword=mySharedPref.getString("password","")
