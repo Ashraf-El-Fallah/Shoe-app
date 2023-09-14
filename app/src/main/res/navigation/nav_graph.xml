@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/instructions1Fragment"
-        android:name="com.af.shoeapp.Instructions1Fragment"
+        android:name="com.af.shoeapp.views.Instructions1Fragment"
         android:label="fragment_instructions1"
         tools:layout="@layout/fragment_instructions1" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/instructions2Fragment"
-        android:name="com.af.shoeapp.Instructions2Fragment"
+        android:name="com.af.shoeapp.views.Instructions2Fragment"
         android:label="fragment_instructions2"
         tools:layout="@layout/fragment_instructions2" >
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.af.shoeapp.LoginFragment"
+        android:name="com.af.shoeapp.views.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.af.shoeapp.WelcomeFragment"
+        android:name="com.af.shoeapp.views.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/shoeListFragment"
-        android:name="com.af.shoeapp.ShoeListFragment"
+        android:name="com.af.shoeapp.views.ShoeListFragment"
         android:label="fragment_shoe_list"
         tools:layout="@layout/fragment_shoe_list" >
 
@@ -70,7 +70,7 @@
 
     <fragment
         android:id="@+id/shoeDetailFragment"
-        android:name="ShoeDetailFragment"
+        android:name="com.af.shoeapp.views.ShoeDetailFragment"
         android:label="ShoeDetailFragment" >
 
         <action

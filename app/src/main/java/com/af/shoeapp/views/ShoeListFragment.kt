@@ -1,4 +1,4 @@
-package com.af.shoeapp
+package com.af.shoeapp.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,17 +10,17 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.RecyclerView
+import com.af.shoeapp.R
+import com.af.shoeapp.data.Shoe
+import com.af.shoeapp.adapters.ShoeAdapter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class ShoeListFragment : Fragment() {
 
-    lateinit var shoeAdapter:ShoeAdapter
+    private lateinit var shoeAdapter: ShoeAdapter
 
 
     override fun onCreateView(
@@ -42,9 +42,11 @@ class ShoeListFragment : Fragment() {
 
         //recyclerView
 
-        val shoes= arrayListOf<Shoe>(Shoe("Black shoes","Adidas",R.drawable.shoes_black,30),
-            Shoe("Nike shoes","Nike",R.drawable.nike_shoes,20))
-        shoeAdapter=ShoeAdapter(shoes)
+        val shoes= arrayListOf<Shoe>(
+            Shoe("Black shoes","Adidas", R.drawable.shoes_black,30),
+            Shoe("Nike shoes","Nike", R.drawable.nike_shoes,20)
+        )
+        shoeAdapter= ShoeAdapter(shoes)
         val recyclerView:RecyclerView=view.findViewById(R.id.rvShoes)
         recyclerView.adapter=shoeAdapter
 
@@ -53,10 +55,10 @@ class ShoeListFragment : Fragment() {
         //receive arguments
         
         val args=this.arguments
-        val companyName=args?.get("companyName")
-        val shoeName=args?.get("shoeName")
+        val companyName=args?.getString("companyName")
+        val shoeName=args?.getString("shoeName")
 
-        val userShoe=Shoe(shoeName.toString(),companyName.toString(),R.drawable.shoe3,20)
+        val userShoe= Shoe(shoeName.toString(),companyName.toString(), R.drawable.shoe3,20)
 
         shoes.add(userShoe)
         shoeAdapter.notifyItemInserted(shoes.size-1)
@@ -78,7 +80,7 @@ class ShoeListFragment : Fragment() {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_toolbar , menu)
+        inflater.inflate(R.menu.menu_toolbar, menu)
         super.onCreateOptionsMenu(menu, inflater)
 
     }

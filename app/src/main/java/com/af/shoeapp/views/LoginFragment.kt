@@ -1,4 +1,4 @@
-package com.af.shoeapp
+package com.af.shoeapp.views
 
 import android.content.Context
 //import android.os.Build.VERSION_CODES.R
@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.af.shoeapp.R
 
 class LoginFragment : Fragment() {
 

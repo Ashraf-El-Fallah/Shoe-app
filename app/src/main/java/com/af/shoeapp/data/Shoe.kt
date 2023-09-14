@@ -1,4 +1,4 @@
-package com.af.shoeapp
+package com.af.shoeapp.data
 
 data class Shoe(
     var shoeName:String,
