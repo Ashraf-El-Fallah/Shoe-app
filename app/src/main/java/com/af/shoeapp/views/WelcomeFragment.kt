@@ -8,23 +8,32 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
 import com.af.shoeapp.R
+import com.af.shoeapp.databinding.FragmentInstructions1Binding
+import com.af.shoeapp.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
 
+    private var _binding: FragmentWelcomeBinding?=null
+    private val binding get()=_binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_welcome, container, false)
-        val nextButton= view.findViewById< Button>(R.id.btnNext3)
+        _binding=FragmentWelcomeBinding.inflate(inflater,container,false)
+        val view=binding.root
 
+        val nextButton= binding.btnNext3
         nextButton.setOnClickListener {
             view.findNavController()
                 .navigate(R.id.action_welcomeFragment_to_shoeListFragment)
         }
-
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 
 }

@@ -21,3 +21,7 @@ i
 9app/src/main/java/com/af/shoeapp/views/WelcomeFragment.kt,0\4\04ce2e685d9323b75e4dd89671870482daa37bc2
 j
 :app/src/main/java/com/af/shoeapp/views/ShoeListFragment.kt,1\7\17b8e23689f8ae5fa9f8eb330cb2a29d310b0467
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d

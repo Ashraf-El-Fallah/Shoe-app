@@ -8,25 +8,36 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
 import com.af.shoeapp.R
+import com.af.shoeapp.databinding.FragmentInstructions1Binding
+import com.af.shoeapp.databinding.FragmentInstructions2Binding
 
 class Instructions2Fragment : Fragment() {
-
-
+    private var _binding: FragmentInstructions2Binding?=null
+    private val binding get()=_binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view= inflater.inflate(R.layout.fragment_instructions2, container, false)
-        val nextButton=view.findViewById<Button>(R.id.btnNext2)
+        _binding=FragmentInstructions2Binding.inflate(inflater,container,false)
+//        val view=binding.root
 
-        nextButton.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_instructions2Fragment_to_loginFragment)
+        setOnClicks()
+
+        return binding.root
+    }
+
+    private fun setOnClicks(){
+        binding.btnNext2.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(R.id.action_instructions2Fragment_to_loginFragment)
         }
+    }
 
-        return view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 
 

@@ -79,21 +79,6 @@
         android:backgroundTint="@color/pink"
         />
 
-
-<!--    <EditText-->
-<!--        android:id="@+id/etDescription"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/etName"-->
-<!--        android:inputType="textCapSentences|textMultiLine"-->
-<!--        android:hint="Description"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:backgroundTint="@color/pink"-->
-<!--        />-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
         android:layout_width="match_parent"
@@ -127,41 +112,7 @@
         android:layout_marginStart="20dp"
         />
 
-<!--    <RadioGroup-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvSelectSize"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/btnSave"-->
-<!--        android:gravity="center"-->
-<!--        >-->
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="12"-->
-<!--            />-->
 
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="12"-->
-<!--            />-->
-
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--    </RadioGroup>-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -204,8 +155,6 @@
         android:text="CANCEL"
 
         />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

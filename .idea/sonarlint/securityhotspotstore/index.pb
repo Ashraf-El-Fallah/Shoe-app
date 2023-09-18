@@ -21,3 +21,7 @@ c
 3app/src/main/java/com/af/shoeapp/data/SelectSize.kt,2\8\28dd00bdf73c10747378a6c5eedfeceaf5a2d5d3
 o
 ?app/src/main/java/com/af/shoeapp/views/Instructions2Fragment.kt,0\c\0c49619cabee5a64e24725c068a085848972f73d
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
