@@ -1,6 +1,5 @@
 package com.af.shoeapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.af.shoeapp.databinding.ActivityMainBinding

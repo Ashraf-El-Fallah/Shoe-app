@@ -64,5 +64,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
 
 }

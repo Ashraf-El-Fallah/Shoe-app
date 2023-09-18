@@ -21,14 +21,19 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding=FragmentWelcomeBinding.inflate(inflater,container,false)
-        val view=binding.root
+        return binding.root
+    }
 
-        val nextButton= binding.btnNext3
-        nextButton.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_welcomeFragment_to_shoeListFragment)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnClicks()
+    }
+
+    private fun setOnClicks(){
+        binding.btnNext3.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(R.id.action_welcomeFragment_to_shoeListFragment)
         }
-        return view
     }
 
     override fun onDestroyView() {

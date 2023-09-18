@@ -35,12 +35,11 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding= FragmentShoeListBinding.inflate(inflater,container,false)
-        val view =binding.root
+        return binding.root
+    }
 
-//        addButton = binding.fabAdd
-//        val toolBar =binding.toolbar
-//        val recyclerView: RecyclerView = binding.rvShoes
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         configurationToolBar( binding.toolbar)
         setOnClicks()
 
@@ -50,8 +49,6 @@ class ShoeListFragment : Fragment() {
         //recycler view
         addItemToRecycleView(binding.rvShoes)
         receiveArgumentsFromBundle()
-
-        return view
     }
 
     private fun setOnClicks() {

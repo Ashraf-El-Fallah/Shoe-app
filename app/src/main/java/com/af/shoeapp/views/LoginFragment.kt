@@ -2,41 +2,54 @@ package com.af.shoeapp.views
 
 //import android.os.Build.VERSION_CODES.R
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.findNavController
 import com.af.shoeapp.R
+import com.af.shoeapp.ViewModel.LoginViewModel
 import com.af.shoeapp.databinding.FragmentLoginBinding
 
-class LoginFragment : Fragment() {
+open class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding?=null
     private val binding get()=_binding!!
 
-    private val mySharedPref=requireContext().getSharedPreferences("my_prefrences", Context.MODE_PRIVATE)
-    private val editor=mySharedPref.edit()
+    private lateinit var mySharedPref: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+
+    lateinit var viewModel: ViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding=FragmentLoginBinding.inflate(inflater,container,false)
-        val view=binding.root
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-//        if (isAdded) {
-//            // Access context-related operations here
-//            activity?.applicationContext
-//            context?.resources
-//        }
+        viewModel=ViewModelProvider(this).get(LoginViewModel::class.java)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initSharedPref()
         setOnClicks()
+    }
 
-        return view
+    private fun initSharedPref(){
+        mySharedPref=requireContext().getSharedPreferences("my_prefrences", Context.MODE_PRIVATE)
+        editor=mySharedPref.edit()
     }
 
 
@@ -63,7 +76,7 @@ class LoginFragment : Fragment() {
         if(storedEmail==enteredEmail && storedPassword==enteredPassword){
             moveToNextScreen()
         }else{
-            Toast.makeText(requireContext(),"Password or email is wrong",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Password or email is wrong", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -80,6 +93,8 @@ class LoginFragment : Fragment() {
 //            }
         editor.commit()
     }
+
+
 
     fun moveToNextScreen()
     {

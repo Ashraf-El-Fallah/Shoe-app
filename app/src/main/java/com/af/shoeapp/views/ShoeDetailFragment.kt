@@ -18,6 +18,7 @@ import com.af.shoeapp.adapters.SelectSizeAdapter
 import com.af.shoeapp.databinding.FragmentInstructions2Binding
 import com.af.shoeapp.databinding.FragmentLoginBinding
 import com.af.shoeapp.databinding.FragmentShoeDetailBinding
+import com.af.shoeapp.databinding.SelectSizeBinding
 import com.google.android.material.appbar.MaterialToolbar
 
 class ShoeDetailFragment :Fragment()
@@ -25,26 +26,37 @@ class ShoeDetailFragment :Fragment()
     private var _binding: FragmentShoeDetailBinding?=null
     private val binding get()=_binding!!
 
-    lateinit var selectSizeAdapter: SelectSizeAdapter
-    lateinit var shoeSize:String
-//    lateinit var sizeItemClickListener: SizeItemClickListener
+    private lateinit var selectSizeAdapter: SelectSizeAdapter
+    private lateinit var shoeSize:String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding= FragmentShoeDetailBinding.inflate(inflater,container,false)
 
-    _binding= FragmentShoeDetailBinding.inflate(inflater,container,false)
-    val view=binding.root
+        val viewToSelectSize=inflater.inflate(R.layout.select_size,container,false)
+        val sizeButton= viewToSelectSize.findViewById<AppCompatButton>(R.id.btn)
 
-        val toolBar = binding.toolbar2
+        return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        configurationToolBar()
+        setOnClicks()
+        handlingRecyclerView()
+    }
+
+    private fun configurationToolBar(){
         val activity = activity as AppCompatActivity
-        activity.setSupportActionBar(toolBar)
+        activity.setSupportActionBar(binding.toolbar2)
+    }
 
-
-
-        //recycler view
+    private fun handlingRecyclerView(){
         val sizes= arrayListOf<SelectSize>(
             SelectSize("8"),
             SelectSize("9") ,
@@ -53,54 +65,44 @@ class ShoeDetailFragment :Fragment()
             SelectSize("12")
         )
 
-    val viewToSelectSize=inflater.inflate(R.layout.select_size,container,false)
-    val sizeButton= viewToSelectSize.findViewById<AppCompatButton>(R.id.btn)
+        val recyclerView=binding.rvSelectSize
 
-    val recyclerView=binding.rvSelectSize
+        selectSizeAdapter= SelectSizeAdapter(sizes, sizeClicked = {
+            shoeSize=it
+            Toast.makeText(requireContext(),"you selected a shoe with $it size",Toast.LENGTH_LONG).show()
+        })
+        recyclerView.adapter=selectSizeAdapter
 
-    selectSizeAdapter= SelectSizeAdapter(sizes, sizeClicked = {
-       shoeSize=it
-        Toast.makeText(requireContext(),"you selected a shoe with $it size",Toast.LENGTH_LONG).show()
-    })
-    recyclerView.adapter=selectSizeAdapter
-
-    //Used to  select the size
-
-
-
-
-    val cancel=binding.btnCancel
-    cancel.setOnClickListener{
-        findNavController().navigateUp()
     }
 
-
-
-    val save=binding.btnSave
-
-        save.setOnClickListener {
-
-            var companyName=binding.etCompany.text.toString()
-            var shoeName=binding.etName.text.toString()
-
-//            var companyName=companyNameView.text.toString()
-//            var shoeName=shoeNameView.text.toString()
-
-            val bundle=Bundle()
-
-            bundle.putString("companyName",companyName)
-            bundle.putString("shoeName",shoeName)
-            bundle.putString("shoeSize",shoeSize)
-
-
-            //findNavController().navigateUp()
-            val destinationFragment= ShoeListFragment()
-            destinationFragment.arguments=bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container_view,destinationFragment)?.commit()
+    private fun setOnClicks(){
+        binding.btnSave.setOnClickListener {
+            saveAndPassShoeData()
         }
-        return view
 
+        binding.btnCancel.setOnClickListener{
+            findNavController().navigateUp()
+        }
     }
+
+    private fun saveAndPassShoeData(){
+        var companyName=binding.etCompany.text.toString()
+        var shoeName=binding.etName.text.toString()
+
+
+        val bundle=Bundle()
+
+        bundle.putString("companyName",companyName)
+        bundle.putString("shoeName",shoeName)
+        bundle.putString("shoeSize",shoeSize)
+
+        //findNavController().navigateUp()
+        val destinationFragment= ShoeListFragment()
+        destinationFragment.arguments=bundle
+        fragmentManager?.beginTransaction()?.replace(R.id.fragment_container_view,destinationFragment)?.commit()
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

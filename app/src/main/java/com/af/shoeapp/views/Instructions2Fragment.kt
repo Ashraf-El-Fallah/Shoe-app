@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.findNavController
 import com.af.shoeapp.R
-import com.af.shoeapp.databinding.FragmentInstructions1Binding
 import com.af.shoeapp.databinding.FragmentInstructions2Binding
 
 class Instructions2Fragment : Fragment() {
@@ -21,11 +19,12 @@ class Instructions2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding=FragmentInstructions2Binding.inflate(inflater,container,false)
-//        val view=binding.root
-
-        setOnClicks()
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnClicks()
     }
 
     private fun setOnClicks(){
