@@ -16,7 +16,7 @@ import com.google.android.material.appbar.MaterialToolbar
 
 class ShoeDetailFragment :Fragment()
 {
-    lateinit var selectSizeAdapter: SelectSizeAdapter
+    private lateinit var selectSizeAdapter: SelectSizeAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,8 +50,8 @@ class ShoeDetailFragment :Fragment()
             val companyNameView=view.findViewById<EditText>(R.id.etCompany)
             val shoeNameView=view.findViewById<EditText>(R.id.etName)
 
-            var companyName=companyNameView.text.toString()
-            var shoeName=shoeNameView.text.toString()
+            val companyName=companyNameView.text.toString()
+            val shoeName=shoeNameView.text.toString()
 
             val bundle=Bundle()
             bundle.putString("companyName",companyName)
@@ -60,8 +60,8 @@ class ShoeDetailFragment :Fragment()
 
             val destinationFragment= ShoeListFragment()
             destinationFragment.arguments=bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container_view,destinationFragment)?.commit()
-
+            childFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view,destinationFragment).commit()
 
 
         }
