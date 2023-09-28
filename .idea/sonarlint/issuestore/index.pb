@@ -35,3 +35,5 @@ t
 Dapp/src/main/java/com/af/shoeapp/ui/shoeDetail/ShoeDetailFragment.kt,8\1\81999519ef69edbc4910246479b614527c3e21d6
 k
 ;app/src/main/java/com/af/shoeapp/ui/shoeList/ShoeAdapter.kt,3\c\3c17f3d466c4811e199da86241fd1b1ec7cc4b8c
+|
+Lapp/src/main/java/com/af/shoeapp/ui/instructionList/Instructions2Fragment.kt,7\8\786b4ca997189c528ce5ea0c519eee84fdb7b216

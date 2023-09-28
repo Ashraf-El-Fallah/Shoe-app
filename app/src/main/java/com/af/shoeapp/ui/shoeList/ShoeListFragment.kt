@@ -25,7 +25,6 @@ import com.google.android.material.appbar.MaterialToolbar
 class ShoeListFragment : Fragment() {
 
     private lateinit var shoeAdapter: ShoeAdapter
-    private lateinit var shoes: ArrayList<Shoe>
     lateinit var viewModel:ShareViewModel
 
     private var _binding:FragmentShoeListBinding?=null
@@ -46,20 +45,17 @@ class ShoeListFragment : Fragment() {
 
         //for menu
         setHasOptionsMenu(true)
-
         initViewModel()
 
         //recycler view
         addItemToRecycleView(binding.rvShoes)
-
         setObservers()
     }
 
     private fun setObservers() {
-
         viewModel.shoe.observe(viewLifecycleOwner){shoe->
-            shoes.add(shoe)
-            shoeAdapter.notifyItemInserted(shoes.size - 1)
+            viewModel.shoes.add(shoe)
+            shoeAdapter.notifyItemInserted(viewModel.shoes.size - 1)
         }
 
     }
@@ -70,11 +66,7 @@ class ShoeListFragment : Fragment() {
 
     private fun addItemToRecycleView(recyclerView: RecyclerView) {
         //recyclerView
-        shoes = arrayListOf<Shoe>(
-            Shoe("Black shoes", "Adidas", R.drawable.shoes_black, "30"),
-            Shoe("Nike shoes", "Nike", R.drawable.nike_shoes, "20")
-        )
-        shoeAdapter = ShoeAdapter(shoes)
+        shoeAdapter = ShoeAdapter(viewModel.shoes)
         recyclerView.adapter = shoeAdapter
     }
 
@@ -88,7 +80,6 @@ class ShoeListFragment : Fragment() {
         //toolbar configuration
         val activity = activity as AppCompatActivity
         activity.setSupportActionBar(toolBar)
-
     }
 
     private fun NavController.safeNavigate(direction: NavDirections) {

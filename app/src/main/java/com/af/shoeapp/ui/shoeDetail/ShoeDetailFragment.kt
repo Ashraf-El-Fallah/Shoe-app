@@ -31,12 +31,7 @@ class ShoeDetailFragment :Fragment()
         savedInstanceState: Bundle?
     ): View? {
         _binding= FragmentShoeDetailBinding.inflate(inflater,container,false)
-
-        val viewToSelectSize=inflater.inflate(R.layout.select_size,container,false)
-        val sizeButton= viewToSelectSize.findViewById<AppCompatButton>(R.id.btn)
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,14 +48,14 @@ class ShoeDetailFragment :Fragment()
 
     private fun setOnClicks(){
             binding.btnCancel.setOnClickListener{
-                findNavController().navigateUp()
+                binding.etCompany.text.clear()
+                binding.etName.text.clear()
+                findNavController().popBackStack()
             }
-
             binding.btnSave.setOnClickListener {
                 passShoeData()
                 findNavController().popBackStack()
             }
-
     }
 
     private fun configurationToolBar(){
@@ -87,7 +82,6 @@ class ShoeDetailFragment :Fragment()
 
     }
 
-
     private fun passShoeData() {
         val companyName = binding.etCompany.text.toString()
         val shoeName = binding.etName.text.toString()
@@ -102,7 +96,6 @@ class ShoeDetailFragment :Fragment()
                 )
             )
         }
-
     }
 
     override fun onDestroyView() {

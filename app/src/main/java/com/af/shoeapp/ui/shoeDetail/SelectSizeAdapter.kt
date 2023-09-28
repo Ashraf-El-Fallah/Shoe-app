@@ -15,11 +15,8 @@ class SelectSizeAdapter(
 
     inner class SelectSizeViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectSizeViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.select_size,parent,false)
-//        val binding=SelectSizeBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-
         return SelectSizeViewHolder(view)
     }
 

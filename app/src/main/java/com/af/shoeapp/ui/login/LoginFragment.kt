@@ -23,18 +23,12 @@ open class LoginFragment : Fragment() {
     private lateinit var mySharedPref: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
-    lateinit var viewModel: ViewModel
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-//        viewModel=ViewModelProvider(this).get(LoginViewModel::class.java)
-
         return binding.root
     }
 
@@ -50,9 +44,7 @@ open class LoginFragment : Fragment() {
         editor=mySharedPref.edit()
     }
 
-
     private fun setOnClicks(){
-
         binding.btnRegister.setOnClickListener {
             saveSharedPreferenceData()
         }
@@ -86,20 +78,14 @@ open class LoginFragment : Fragment() {
 
         editor.putString("email",enteredEmail)
         editor.putString("password",enteredPassword)
-//            if(enteredEmail!= null && enteredPassword != null){
-//                moveToNextScreen()
-//            }
         editor.commit()
     }
-
-
 
     fun moveToNextScreen()
     {
         view?.findNavController()
             ?.navigate(R.id.action_loginFragment_to_welcomeFragment)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
