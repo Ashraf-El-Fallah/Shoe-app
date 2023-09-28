@@ -5,5 +5,7 @@
     <color name="pink">#ff00a9</color>
     <color name="orange">#FFA500</color>
     <color name="blue">#0000FF</color>
+    <color name="colorComplementTwoPrimary">#F37E21</color>
+
 
 </resources>
