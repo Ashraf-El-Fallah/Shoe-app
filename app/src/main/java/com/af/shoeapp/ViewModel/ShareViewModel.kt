@@ -3,9 +3,9 @@ package com.af.shoeapp.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.af.shoeapp.data.Shoe
 
 class ShareViewModel: ViewModel() {
-
 
     //shoe detail...................
 
@@ -20,31 +20,13 @@ class ShareViewModel: ViewModel() {
         get() = _eventCancelShoeDetailPress
 
 
-    //company name
-    private val _companyName=MutableLiveData<String>()
-    val companyName:LiveData<String>
-        get()=_companyName
+    private val _shoe=MutableLiveData<Shoe>()
+    val shoe:LiveData<Shoe>
+        get()=_shoe
 
-    fun setCompanyName(name:String){
-        _companyName.value=name
-    }
 
-    //shoe name
-    private val _shoeName=MutableLiveData<String>()
-    val shoeName:LiveData<String>
-        get()=_shoeName
-
-    fun setShoeName(name:String){
-        _shoeName.value=name
-    }
-
-    //shoe size
-    private val _shoeSize=MutableLiveData<String>("0")
-    val shoeSize:LiveData<String>
-        get()=_shoeSize
-
-    fun setShoeSize(size:String){
-        _shoeSize.value=size
+    fun setShoe(shoe: Shoe){
+        _shoe.value = shoe
     }
 
 

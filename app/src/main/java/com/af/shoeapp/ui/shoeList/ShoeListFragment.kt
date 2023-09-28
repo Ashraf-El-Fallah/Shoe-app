@@ -51,51 +51,31 @@ class ShoeListFragment : Fragment() {
 
         //recycler view
         addItemToRecycleView(binding.rvShoes)
+
+        setObservers()
+    }
+
+    private fun setObservers() {
+
+        viewModel.shoe.observe(viewLifecycleOwner){shoe->
+            shoes.add(shoe)
+            shoeAdapter.notifyItemInserted(shoes.size - 1)
+        }
+
     }
 
     private fun initViewModel(){
         viewModel= ViewModelProvider(requireActivity()).get(ShareViewModel::class.java)
     }
 
-    private fun initShoeObservers(): Shoe {
-        var shoeName: String? = null
-        var companyName: String? = null
-        var shoeSize: String? = null
-
-        viewModel.shoeName.observe(viewLifecycleOwner, Observer {newValue->
-            shoeName = newValue
-        })
-
-        viewModel.companyName.observe(viewLifecycleOwner, Observer {newValue->
-            companyName = newValue
-        })
-
-        viewModel.shoeSize.observe(viewLifecycleOwner, Observer {newValue->
-            shoeSize = newValue
-        })
-
-        return Shoe(shoeName, companyName, R.drawable.shoe1, shoeSize)
-    }
-
-
-
-
-
     private fun addItemToRecycleView(recyclerView: RecyclerView) {
         //recyclerView
-
         shoes = arrayListOf<Shoe>(
             Shoe("Black shoes", "Adidas", R.drawable.shoes_black, "30"),
             Shoe("Nike shoes", "Nike", R.drawable.nike_shoes, "20")
         )
-
         shoeAdapter = ShoeAdapter(shoes)
         recyclerView.adapter = shoeAdapter
-
-        shoes.add(initShoeObservers())
-        shoeAdapter.notifyDataSetChanged()
-        shoeAdapter.notifyItemInserted(shoes.size - 1)
-
     }
 
     private fun setOnClicks() {
@@ -104,36 +84,12 @@ class ShoeListFragment : Fragment() {
         }
     }
 
-
-
-
     private fun configurationToolBar(toolBar:MaterialToolbar) {
         //toolbar configuration
         val activity = activity as AppCompatActivity
         activity.setSupportActionBar(toolBar)
 
     }
-
-
-    private fun receiveArgumentsFromBundle() {
-        //receive arguments
-
-//        val args = this.arguments
-//        val companyName = args?.getString("companyName")
-//        val shoeName = args?.getString("shoeName")
-//        val shoeSize= args?.getString("shoeSize")
-
-//        val userShoe = Shoe(shoeName.toString(), companyName.toString(), R.drawable.shoe3, shoeSize)
-
-//        shoes.add(initShoeObservers())
-//        shoeAdapter.notifyItemInserted(shoes.size - 1)
-    }
-
-//    private fun navigateToDestinationFragment(){
-//        view?.findNavController()
-//            ?.safeNavigate(com.af.shoeapp.ui.ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
-//        //.navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
-//    }
 
     private fun NavController.safeNavigate(direction: NavDirections) {
         currentDestination?.getAction(direction.actionId)?.run {

@@ -8,14 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.af.shoeapp.R
 import com.af.shoeapp.ViewModel.ShareViewModel
 import com.af.shoeapp.data.SelectSize
+import com.af.shoeapp.data.Shoe
 import com.af.shoeapp.databinding.FragmentShoeDetailBinding
-import com.af.shoeapp.ui.shoeList.ShoeListFragment
 
 class ShoeDetailFragment :Fragment()
 {
@@ -42,11 +41,8 @@ class ShoeDetailFragment :Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViewModel()
         setOnClicks()
-        passShoeData()
-
         configurationToolBar()
         handlingRecyclerView()
     }
@@ -55,38 +51,17 @@ class ShoeDetailFragment :Fragment()
         viewModel= ViewModelProvider(requireActivity()).get(ShareViewModel::class.java)
     }
 
-//    private fun initObservers() {
-//        viewModel.eventSaveShoeDetailPress.observe(viewLifecycleOwner, Observer {
-//            if (!it) {
-//                saveShoeDetail()
-//            }
-//        })
-//
-//        viewModel.eventCancelShoeDetailPress.observe(viewLifecycleOwner, Observer {
-//            if (!it) {
-//                cancelShoeDetail()
-//            }
-//        })
-//    }
-
     private fun setOnClicks(){
             binding.btnCancel.setOnClickListener{
                 findNavController().navigateUp()
             }
 
             binding.btnSave.setOnClickListener {
+                passShoeData()
                 findNavController().popBackStack()
             }
 
     }
-
-
-
-//    private fun moveToListScreen(){
-//        val destinationFragment= ShoeListFragment()
-//        destinationFragment.arguments=passShoeData()   //bundle
-//        fragmentManager?.beginTransaction()?.replace(R.id.fragment_container_view,destinationFragment)?.commit()
-//    }
 
     private fun configurationToolBar(){
         val activity = activity as AppCompatActivity
@@ -113,24 +88,21 @@ class ShoeDetailFragment :Fragment()
     }
 
 
-    private fun passShoeData(){
-        var companyName=binding.etCompany.text.toString()
-        var shoeName=binding.etName.text.toString()
+    private fun passShoeData() {
+        val companyName = binding.etCompany.text.toString()
+        val shoeName = binding.etName.text.toString()
 
-//        val bundle=Bundle()
-
-//        bundle.putString("companyName",companyName)
-//        bundle.putString("shoeName",shoeName)
-//        bundle.putString("shoeSize",shoeSize)
-
-
-        if (!shoeSize.isNullOrEmpty()) {
-            viewModel.setCompanyName(companyName)
-            viewModel.setShoeName(shoeName)
-            viewModel.setShoeSize(shoeSize)
+        if (shoeSize.isNullOrEmpty().not()) {
+            viewModel.setShoe(
+                Shoe(
+                    shoeName = shoeName,
+                    shoeDetail = companyName,
+                    shoeSize = shoeSize,
+                    shoePicUrl = R.drawable.shoe1
+                )
+            )
         }
 
-//        return bundle
     }
 
     override fun onDestroyView() {
