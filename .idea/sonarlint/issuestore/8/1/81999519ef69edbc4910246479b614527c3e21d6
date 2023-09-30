@@ -1,3 +1,4 @@
 
-Nkotlin:S1481$"/Remove this unused "sizeButton" local variable.(ó±”8Ã™¨æ­1
-Kkotlin:S65183",Replace function call with indexed accessor.(×ü¢¥8Ê™¨æ­1
+>kotlin:S1128	"Remove this unused import.(™ƒßìÿÿÿÿÿ8‰—Ì¢®1
+>kotlin:S1128"Remove this unused import.(ú¹ÚÇüÿÿÿÿ8‰—Ì¢®1
+Kkotlin:S6518/",Replace function call with indexed accessor.(×ü¢¥8Œ—Ì¢®1

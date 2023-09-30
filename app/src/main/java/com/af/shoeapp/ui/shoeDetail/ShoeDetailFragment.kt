@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.af.shoeapp.R
@@ -47,15 +48,17 @@ class ShoeDetailFragment :Fragment()
     }
 
     private fun setOnClicks(){
+
             binding.btnCancel.setOnClickListener{
-                binding.etCompany.text.clear()
-                binding.etName.text.clear()
+               viewModel.setShoe(Shoe("","",0,""))
                 findNavController().popBackStack()
             }
             binding.btnSave.setOnClickListener {
                 passShoeData()
                 findNavController().popBackStack()
             }
+
+        
     }
 
     private fun configurationToolBar(){

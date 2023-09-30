@@ -5,4 +5,5 @@ data class Shoe(
     var shoeDetail: String?,
     var shoePicUrl:Int,
     var shoeSize:String?
+
 )

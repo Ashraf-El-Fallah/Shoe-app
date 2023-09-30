@@ -54,8 +54,11 @@ class ShoeListFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.shoe.observe(viewLifecycleOwner){shoe->
-            viewModel.shoes.add(shoe)
-            shoeAdapter.notifyItemInserted(viewModel.shoes.size - 1)
+            if(viewModel.shoe.value?.shoeName.isNullOrEmpty().not())
+            {
+                viewModel.shoes.add(shoe)
+                shoeAdapter.notifyItemInserted(viewModel.shoes.size - 1)
+            }
         }
 
     }
